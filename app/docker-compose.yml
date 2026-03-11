@@ -1,0 +1,17 @@
+version: '3'
+services:
+  back:
+    image: yourusername/lab-docker-back:latest
+    ports:
+      - "8080:5000"
+    environment:
+      - CURRENT_ENVIRONMENT=production
+    # volumes:
+    #   - ./back/logs:/app/logs
+
+  front:
+    image: yourusername/lab-docker-front:latest
+    ports:
+      - "8081:80"
+    environment:
+      - WS_BACK_URL=http://localhost:8080
